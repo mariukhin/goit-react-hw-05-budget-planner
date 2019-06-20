@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-// import withRenderLog from '../hoc/withRenderLog';
 import * as expenseActions from '../../redux/expense/expenseActions';
 
 const mapDispatchToProps = dispatch => ({

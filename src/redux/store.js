@@ -5,7 +5,7 @@ import expenseReducer from './expense/expenseReducer';
 
 const rootReducer = combineReducers({
   budget: budgetReducer,
-  expense: expenseReducer,
+  expenses: expenseReducer,
 });
 const store = createStore(rootReducer, devToolsEnhancer());
 

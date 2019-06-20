@@ -9,24 +9,16 @@ export default class BudgetForm extends Component {
   state = { budget: 0 };
 
   static propTypes = {
-    onSave: PropTypes.func.isRequired,
+    saveBudget: PropTypes.func.isRequired,
   };
 
-  // handleChange = ({ target: { value } }) => this.setState({ budget: value });
-  handleChange = e => {
-    this.setState({
-      budget: e.target.value,
-    });
-  };
+  handleChange = ({ target: { value } }) => this.setState({ budget: value });
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.onSave(this.state.budget);
-    // const { saveBudget } = this.props;
-    // const { budget } = this.state;
-    // console.log(budget);
-    // saveBudget(budget);
+    const { saveBudget } = this.props;
+    const { budget } = this.state;
+    saveBudget(budget);
 
     this.setState({ budget: 0 });
   };
