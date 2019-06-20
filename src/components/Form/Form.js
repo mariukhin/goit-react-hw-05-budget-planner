@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Form.module.css';
 
 const Form = ({ onSubmit = () => null, children }) => (
@@ -6,5 +7,8 @@ const Form = ({ onSubmit = () => null, children }) => (
     {children}
   </form>
 );
-
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
 export default Form;

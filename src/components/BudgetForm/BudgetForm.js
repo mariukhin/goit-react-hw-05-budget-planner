@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Form from '../shared/Form/Form';
-import Label from '../shared/Label/Label';
-import Input from '../shared/Input/Input';
-import Button from '../shared/Button/Button';
+import Form from '../Form/Form';
+import Label from '../Label/Label';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
 
 export default class BudgetForm extends Component {
   state = { budget: 0 };
@@ -12,14 +12,21 @@ export default class BudgetForm extends Component {
     onSave: PropTypes.func.isRequired,
   };
 
-  handleChange = ({ target: { value } }) => this.setState({ budget: value });
+  // handleChange = ({ target: { value } }) => this.setState({ budget: value });
+  handleChange = e => {
+    this.setState({
+      budget: e.target.value,
+    });
+  };
 
   handleSubmit = e => {
-    const { onSave } = this.props;
-    const { budget } = this.state;
     e.preventDefault();
 
-    onSave(budget);
+    this.props.onSave(this.state.budget);
+    // const { saveBudget } = this.props;
+    // const { budget } = this.state;
+    // console.log(budget);
+    // saveBudget(budget);
 
     this.setState({ budget: 0 });
   };

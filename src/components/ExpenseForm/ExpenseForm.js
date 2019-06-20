@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Form from '../shared/Form/Form';
-import Label from '../shared/Label/Label';
-import Input from '../shared/Input/Input';
-import Button from '../shared/Button/Button';
+import PropTypes from 'prop-types';
+import Form from '../Form/Form';
+import Label from '../Label/Label';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
 
 export default class ExpenseForm extends Component {
   state = {
@@ -10,23 +11,27 @@ export default class ExpenseForm extends Component {
     amount: 0,
   };
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+  static propTypes = {
+    addExpense: PropTypes.func.isRequired,
   };
+
+  handleChange = ({ target: { name, value } }) =>
+    this.setState({ [name]: value });
 
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.onSave({
-      ...this.state,
-    });
+    const { name, amount } = this.state;
+    const { addExpense } = this.props;
+
+    addExpense(name, amount);
 
     this.setState({ name: '', amount: 0 });
   };
 
   render() {
+    const { name, amount } = this.state;
+
     return (
       <Form onSubmit={this.handleSubmit}>
         <Label>
@@ -34,7 +39,7 @@ export default class ExpenseForm extends Component {
           <Input
             type="text"
             name="name"
-            value={this.state.name}
+            value={name}
             onChange={this.handleChange}
           />
         </Label>
@@ -43,7 +48,7 @@ export default class ExpenseForm extends Component {
           <Input
             type="number"
             name="amount"
-            value={this.state.amount}
+            value={amount}
             onChange={this.handleChange}
           />
         </Label>

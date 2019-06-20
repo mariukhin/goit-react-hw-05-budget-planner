@@ -1,38 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
-import * as budgetFormSelectors from '../redux/budget/budgetFormSelectors';
 import styles from './appstyles.module.css';
 import BudgetForm from './BudgetForm/BudgetForm';
 import ExpenseForm from './ExpenseForm/ExpenseForm';
-import ExpensesTable from './ExpensesTable/ExpensesTable';
+// import ExpensesTable from './ExpensesTable/ExpensesTable';
 import Values from './Values/Values';
+import * as budgetSelectors from '../redux/budget/budgetSelectors';
+import * as expenseSelectors from '../redux/expense/expenseSelectors';
 
-// const calculateTotalExpenses = expenses =>
-//   expenses.reduce((total, expense) => (total += expense.amount), 0);
-// const calculateBalance = (budget, expenses) => budget - expenses;
+const calculateTotalExpenses = expenses =>
+  expenses.reduce((total, expense) => (total += expense.amount), 0);
+const calculateBalance = (budget, expenses) => budget - expenses;
 
-const App = ({ budget }) => (
+const App = ({ budget, expenses }) => (
   <div className={styles.container}>
     <BudgetForm />
-    {/* <Values budget={budget} expenses={totalExpenses} balance={balance} />
-  <ExpenseForm onSave={this.addExpense} />
-  {expenses.length > 0 && (
-    <ExpensesTable items={expenses} onRemove={this.removeExpense} />
-  )} */}
+    <Values
+      budget={budget}
+      expenses={calculateTotalExpenses(expenses)}
+      balance={calculateBalance(budget, expenses)}
+    />
+    <ExpenseForm />
+    {/* {expenses.length > 0 && (
+      <ExpensesTable items={expenses} onRemove={this.removeExpense} />
+    )} */}
   </div>
 );
 App.propTypes = {
-  budget: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  budget: PropTypes.number,
+  expenses: PropTypes.arrayOf(PropTypes.object),
 };
 
 App.defaultProps = {
   budget: 0,
+  expenses: [],
 };
 
 const mapStateToProps = state => ({
-  budget: budgetFormSelectors.getBudget(state),
+  budget: budgetSelectors.getBudget(state),
+  expenses: expenseSelectors.getExpenses(state),
 });
 
 export default connect(

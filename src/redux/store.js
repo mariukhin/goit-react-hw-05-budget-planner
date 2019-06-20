@@ -1,13 +1,12 @@
 import { createStore, combineReducers } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import budgetFormReducer from './budget/budgetFormReducer';
-// import timerReducer from './timer/timerReducer';
-// import postsReducer from './posts/postsReducer';
+import budgetReducer from './budget/budgetReducer';
+import expenseReducer from './expense/expenseReducer';
 
-// const rootReducer = combineReducers({
-//   timer: timerReducer,
-//   posts: postsReducer,
-// });
-const store = createStore(budgetFormReducer, devToolsEnhancer());
+const rootReducer = combineReducers({
+  budget: budgetReducer,
+  expense: expenseReducer,
+});
+const store = createStore(rootReducer, devToolsEnhancer());
 
 export default store;
