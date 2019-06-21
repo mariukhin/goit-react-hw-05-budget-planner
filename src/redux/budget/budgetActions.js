@@ -3,5 +3,5 @@ export const ActionType = {
 };
 export const saveBudget = budget => ({
   type: ActionType.SAVE_BUDGET,
-  payload: budget,
+  payload: Number(budget),
 });
