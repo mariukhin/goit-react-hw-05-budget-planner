@@ -4,11 +4,12 @@ import Form from '../Form/Form';
 import Label from '../Label/Label';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import { checkNumber } from '../../services/helper';
 
 export default class ExpenseForm extends Component {
   state = {
     name: '',
-    amount: 0,
+    amount: '',
   };
 
   static propTypes = {
@@ -24,9 +25,13 @@ export default class ExpenseForm extends Component {
     const { name, amount } = this.state;
     const { addExpense } = this.props;
 
-    addExpense(name, amount);
+    if (checkNumber(amount)) {
+      addExpense(name, amount);
+    } else {
+      alert('Your amount must be greater than zero!!!');
+    }
 
-    this.setState({ name: '', amount: 0 });
+    this.setState({ name: '', amount: '' });
   };
 
   render() {

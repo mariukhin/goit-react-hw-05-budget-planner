@@ -4,9 +4,10 @@ import Form from '../Form/Form';
 import Label from '../Label/Label';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import { checkNumber } from '../../services/helper';
 
 export default class BudgetForm extends Component {
-  state = { budget: 0 };
+  state = { budget: '' };
 
   static propTypes = {
     saveBudget: PropTypes.func.isRequired,
@@ -18,9 +19,12 @@ export default class BudgetForm extends Component {
     e.preventDefault();
     const { saveBudget } = this.props;
     const { budget } = this.state;
-    saveBudget(budget);
-
-    this.setState({ budget: 0 });
+    if (checkNumber(budget)) {
+      saveBudget(budget);
+    } else {
+      alert('Your budget must be greater than zero!!!');
+    }
+    this.setState({ budget: '' });
   };
 
   render() {
