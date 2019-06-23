@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/goit-react-hw-05-budget-planner/static/js/runtime~main.0cda3cff.js"
   },
   {
-    "revision": "25514ed0cac10ef25273",
-    "url": "/goit-react-hw-05-budget-planner/static/js/main.da9429af.chunk.js"
+    "revision": "dceddc783ffbde71831b",
+    "url": "/goit-react-hw-05-budget-planner/static/js/main.df17cc77.chunk.js"
   },
   {
     "revision": "d75057683afe6b7faa8a",
     "url": "/goit-react-hw-05-budget-planner/static/js/2.4331a97d.chunk.js"
   },
   {
-    "revision": "25514ed0cac10ef25273",
+    "revision": "dceddc783ffbde71831b",
     "url": "/goit-react-hw-05-budget-planner/static/css/main.67040729.chunk.css"
   },
   {
-    "revision": "fa782c30768e33e5e1281155abaadec9",
+    "revision": "afd62497fb77c19e9fe521431cabe2e6",
     "url": "/goit-react-hw-05-budget-planner/index.html"
   }
 ];
