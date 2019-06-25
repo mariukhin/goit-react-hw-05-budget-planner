@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Form from '../Form/Form';
-import Label from '../Label/Label';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import { checkNumber } from '../../services/helper';
+import Form from '../../common/Form/Form';
+import Label from '../../common/Label/Label';
+import Input from '../../common/Input/Input';
+import Button from '../../common/Button/Button';
+import { checkNumber } from '../../../services/helper';
 
 export default class BudgetForm extends Component {
   state = { budget: '' };

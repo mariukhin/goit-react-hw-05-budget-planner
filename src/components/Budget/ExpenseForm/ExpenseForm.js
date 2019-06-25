@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Form from '../Form/Form';
-import Label from '../Label/Label';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import { checkNumber } from '../../services/helper';
+import Form from '../../common/Form/Form';
+import Label from '../../common/Label/Label';
+import Input from '../../common/Input/Input';
+import Button from '../../common/Button/Button';
+import { checkNumber, calculateBalance } from '../../../services/helper';
 
 export default class ExpenseForm extends Component {
   state = {
@@ -14,6 +14,7 @@ export default class ExpenseForm extends Component {
 
   static propTypes = {
     addExpense: PropTypes.func.isRequired,
+    budget: PropTypes.number.isRequired,
   };
 
   handleChange = ({ target: { name, value } }) =>
@@ -23,14 +24,17 @@ export default class ExpenseForm extends Component {
     e.preventDefault();
 
     const { name, amount } = this.state;
-    const { addExpense } = this.props;
+    const { addExpense, budget } = this.props;
 
-    if (checkNumber(amount)) {
+    if (name === '') {
+      alert('Put the name of expense!!!');
+    } else if (calculateBalance(budget, amount) < 0) {
+      alert('You can`t have - balance!!!');
+    } else if (checkNumber(amount)) {
       addExpense(name, amount);
     } else {
       alert('Your amount must be greater than zero!!!');
     }
-
     this.setState({ name: '', amount: '' });
   };
 

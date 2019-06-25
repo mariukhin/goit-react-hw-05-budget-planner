@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ExpensesTable.module.css';
-import Button from '../Button/Button';
+import Button from '../../common/Button/Button';
 
 const ExpensesTable = ({ expenses = [], deleteExpense }) =>
   expenses.length > 0 && (

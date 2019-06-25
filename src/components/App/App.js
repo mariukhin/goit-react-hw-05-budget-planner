@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './appstyles.module.css';
-import BudgetForm from '../BudgetForm/BudgetFormContainer';
-import ExpenseForm from '../ExpenseForm/ExpenseFormContainer';
-import ExpensesTable from '../ExpensesTable/ExpensesTableContainer';
-import Values from '../Values/ValuesContainer';
+import BudgetForm from '../Budget/BudgetForm/BudgetFormContainer';
+import ExpenseForm from '../Budget/ExpenseForm/ExpenseFormContainer';
+import ExpensesTable from '../Budget/ExpensesTable/ExpensesTableContainer';
+import Values from '../Budget/Values/ValuesContainer';
 import * as budgetSelectors from '../../redux/budget/budgetSelectors';
 import * as expenseSelectors from '../../redux/expense/expenseSelectors';
 

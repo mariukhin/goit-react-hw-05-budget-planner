@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ExpensesTable from './ExpensesTable';
-import * as expenseActions from '../../redux/expense/expenseActions';
-import * as expenseSelectors from '../../redux/expense/expenseSelectors';
+import * as expenseActions from '../../../redux/expense/expenseActionCreators';
+import * as expenseSelectors from '../../../redux/expense/expenseSelectors';
 
 const mapStateToProps = state => ({
   expenses: expenseSelectors.getExpenses(state),
